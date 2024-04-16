@@ -329,7 +329,7 @@ namespace test_btc
                     {
                         // Tạo địa chỉ từ master key và key path
                         // Kiểm tra xem địa chỉ có trong file CSV không
-                        bool addressFound = true;
+                        bool addressFound = false;
                         foreach (var VARIABLE in listAddress)
                         {
                             if (addDataCheck.Contains(VARIABLE))
