@@ -21,7 +21,7 @@ namespace test_btc
             // Biến để cache dữ liệu
             List<string> cachedData = new List<string>();
             HashSet<string> addData = new HashSet<string>();
-            //  await AddData(Path.Combine(Environment.CurrentDirectory, "btc-list-address.txt"), addData);
+            await AddData(Path.Combine(Environment.CurrentDirectory, "btc-list-address.txt"), addData);
             List<string> data = Wordlist.English.GetWords().ToList();
             // Tạo ra 5 Task để chạy hàm Check
             Task[] tasks = new Task[number < 1 ? 1 : number];
