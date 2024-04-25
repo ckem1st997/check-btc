@@ -42,10 +42,10 @@ namespace test_btc
             static int[] GetRandomNumbers(DateTime dateTime, int[] randomNumbers)
             {
                 // Sử dụng dữ liệu từ DateTime để tạo seed cho Random
-                int seed = (int)(dateTime.Millisecond + dateTime.Second * 1000 + dateTime.Minute * 60000 + dateTime.Hour * 3600000 +
-                           dateTime.Day * 86400000 + dateTime.Month * 2678400000 + dateTime.Year * 31536000000);
+                //int seed = (int)(dateTime.Millisecond + dateTime.Second * 1000 + dateTime.Minute * 60000 + dateTime.Hour * 3600000 +
+                //           dateTime.Day * 86400000 + dateTime.Month * 2678400000 + dateTime.Year * 31536000000);
                 // Tạo đối tượng Random với seed từ DateTime
-                Random random = new Random(seed);
+                Random random = new Random(dateTime.Ticks.GetHashCode());
                 // Tạo 12 số ngẫu nhiên và đưa vào mảng
                 for (int i = 0; i < 12; i++)
                 {
