@@ -17,6 +17,7 @@ namespace test_btc
 
             Console.WriteLine("Input number thread:");
             int number = int.Parse(Console.ReadLine());
+            DateTime dateTime = new DateTime(2009, 1, 1);
 
             // Biến để cache dữ liệu
             List<string> cachedData = new List<string>();
@@ -30,7 +31,7 @@ namespace test_btc
                 tasks[i] = Task.Run(async () =>
                 {
                     // Gọi hàm Check và đợi kết quả
-                    await Check(data, addData);
+                    await Check(data, addData, dateTime);
                 });
             }
 
@@ -55,7 +56,7 @@ namespace test_btc
                 return randomNumbers;
             }
 
-            static async Task Check(List<string> words, HashSet<string> addDataCheck)
+            static async Task Check(List<string> words, HashSet<string> addDataCheck,DateTime dateTime)
             {
 
                 string currentDirectory = Environment.CurrentDirectory;
@@ -67,7 +68,6 @@ namespace test_btc
                 Random random = new Random();
 
                 //
-                DateTime dateTime = new DateTime(2009, 1, 1);
                 int[] randomNumbers = new int[12];
                 while (true)
                 {
