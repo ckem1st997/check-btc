@@ -78,7 +78,7 @@ namespace test_btc
                     {
                         mnemonicWords = mnemonicWords + " " + words[item];
                     }
-                    dateTime = dateTime.AddSeconds(1);
+                    dateTime = dateTime.AddSeconds(random.Next(11111,99999999));
                     //rd = new List<string>();
                     //var listRd = new List<int>();
                     //for (int i = 0; i < seedNum; i++)
