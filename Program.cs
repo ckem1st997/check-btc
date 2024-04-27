@@ -127,7 +127,7 @@ namespace test_btc
                         var extKey2 = masterKey.Derive(keyPathP2SH);
                         var address2 = extKey2.PrivateKey.PubKey.GetAddress(ScriptPubKeyType.SegwitP2SH, Network.Main);
                         listAddress.Add(address2.ToString());
-                        Console.WriteLine($"[{count}]|{Task.CurrentId}-{address}");
+                        Console.WriteLine($"[{count}]|{Task.CurrentId}|{dateTime}-{address}");
                         // Tạo và kiểm tra các loại địa chỉ khác nhau
                         // Stopwatch stopwatch = Stopwatch.StartNew();
                         try
