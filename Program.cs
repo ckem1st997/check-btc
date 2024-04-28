@@ -73,36 +73,36 @@ namespace test_btc
                 {
                     mnemonicWords = string.Empty;
 
-                    var nums = GetRandomNumbers(dateTime, randomNumbers);
-                    foreach (var item in nums)
-                    {
-                        mnemonicWords = mnemonicWords + " " + words[item];
-                    }
-                    dateTime = dateTime.AddMicroseconds(random.Next(111111,99999999));
-                    //rd = new List<string>();
-                    //var listRd = new List<int>();
-                    //for (int i = 0; i < seedNum; i++)
+                    //var nums = GetRandomNumbers(dateTime, randomNumbers);
+                    //foreach (var item in nums)
                     //{
-                    //    bool b = true;
-                    //    while (b)
-                    //    {
-                    //        int randomIndex = random.Next(2048);
-                    //        var check = listRd.Where(x => x == randomIndex);
-                    //        if ((check == null || !check.Any()))
-                    //        {
-                    //            rd.Add(randomIndex.ToString());
-                    //            listRd.Add(randomIndex);
-                    //            mnemonicWords = mnemonicWords + " " + words[randomIndex];
-                    //            b = false;
-                    //        }
-                    //    }
-
+                    //    mnemonicWords = mnemonicWords + " " + words[item];
                     //}
+                    //dateTime = dateTime.AddMicroseconds(random.Next(111111,99999999));
+                    rd = new List<string>();
+                    var listRd = new List<int>();
+                    for (int i = 0; i < seedNum; i++)
+                    {
+                        bool b = true;
+                        while (b)
+                        {
+                            int randomIndex = random.Next(2048);
+                            var check = listRd.Where(x => x == randomIndex);
+                            if ((check == null || !check.Any()))
+                            {
+                                rd.Add(randomIndex.ToString());
+                                listRd.Add(randomIndex);
+                                mnemonicWords = mnemonicWords + " " + words[randomIndex];
+                                b = false;
+                            }
+                        }
+
+                    }
 
                     mnemonicWords = mnemonicWords.Trim();
 
                     // if (!(!string.IsNullOrEmpty(mnemonicWords) && (mnemonicWords.Split(" ").Length == 12 || mnemonicWords.Split(" ").Length == 24))) continue;
-                    if (!(!string.IsNullOrEmpty(mnemonicWords) && (mnemonicWords.Split(" ").Length == 12))) continue;
+                  //  if (!(!string.IsNullOrEmpty(mnemonicWords) && (mnemonicWords.Split(" ").Length == 12))) continue;
                     try
                     {
                         count++;
@@ -113,7 +113,7 @@ namespace test_btc
                         // KeyPath cho mỗi loại địa chỉ
                         KeyPath keyPathSegwit = new KeyPath("m/84'/0'/0'/0/0"); // P2WPKH
                         KeyPath keyPathLegacy = new KeyPath("m/44'/0'/0'/0/0"); // P2PKH
-                        KeyPath keyPathP2SH = new KeyPath("m/49'/0'/0'/0/0"); // P2SH-P2WPKH
+                        KeyPath keyPathP2SH = new KeyPath("m/49'/0'/0'/0/0"); // P2SH-P2WPKHdot
 
                         var listAddress = new List<string>();
                         var extKey = masterKey.Derive(keyPathSegwit);
@@ -127,7 +127,7 @@ namespace test_btc
                         var extKey2 = masterKey.Derive(keyPathP2SH);
                         var address2 = extKey2.PrivateKey.PubKey.GetAddress(ScriptPubKeyType.SegwitP2SH, Network.Main);
                         listAddress.Add(address2.ToString());
-                        Console.WriteLine($"[{count}]|{Task.CurrentId}|{dateTime}-{address}");
+                        Console.WriteLine($"[{count}]|{Task.CurrentId}|-{address}");
                         // Tạo và kiểm tra các loại địa chỉ khác nhau
                         // Stopwatch stopwatch = Stopwatch.StartNew();
                         try
